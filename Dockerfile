@@ -15,11 +15,11 @@ RUN wget -P /opt https://downloads.apache.org/maven/maven-3/3.6.3/binaries/apach
     rm /opt/apache-maven-3.6.3-bin.tar.gz
 ENV PATH="/opt/apache-maven-3.6.3/bin:${PATH}"
 
-RUN wget -P /opt https://downloads.lightbend.com/scala/2.12.10/scala-2.12.10.tgz && \
-    tar -xzf /opt/scala-2.12.10.tgz -C /opt && \
-    rm /opt/scala-2.12.10.tgz
-ENV PATH="/opt/scala-2.12.10/bin:${PATH}"
-ENV SCALA_HOME="/opt/scala-2.12.10"
+RUN wget -P /opt https://downloads.lightbend.com/scala/2.13.5/scala-2.13.5.tgz && \
+    tar -xzf /opt/scala-2.13.5.tgz -C /opt && \
+    rm /opt/scala-2.13.5.tgz
+ENV PATH="/opt/scala-2.13.5/bin:${PATH}"
+ENV SCALA_HOME="/opt/scala-2.13.5"
 
 RUN wget -P /opt https://github.com/sbt/sbt/releases/download/v1.4.8/sbt-1.4.8.zip && \
     unzip /opt/sbt-1.4.8.zip -d /opt && \
@@ -27,3 +27,6 @@ RUN wget -P /opt https://github.com/sbt/sbt/releases/download/v1.4.8/sbt-1.4.8.z
 ENV PATH="/opt/sbt/bin:${PATH}"
 
 LABEL maintainer="bishoybasily@gmail.com"
+
+
+

@@ -1,4 +1,3 @@
-LABEL maintainer="bishoybasily@gmail.com"
 
 FROM ubuntu:20.04
 RUN apt-get update && apt-get install unzip nano wget build-essential zlib1g-dev -y
@@ -26,3 +25,5 @@ RUN wget --progress=bar:force:noscroll -P /opt https://github.com/sbt/sbt/releas
     unzip /opt/sbt-1.4.8.zip -d /opt && \
     rm /opt/sbt-1.4.8.zip
 ENV PATH="/opt/sbt/bin:${PATH}"
+
+LABEL maintainer="bishoybasily@gmail.com"

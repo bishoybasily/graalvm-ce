@@ -1,3 +1,5 @@
+LABEL maintainer="bishoybasily@gmail.com"
+
 FROM ubuntu:20.04
 RUN apt-get update && apt-get install unzip nano wget build-essential zlib1g-dev -y
 

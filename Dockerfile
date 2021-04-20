@@ -34,6 +34,8 @@ RUN wget -P /opt https://github.com/graalvm/graalvm-ce-builds/releases/download/
 ENV PATH="/opt/graalvm-ce-java11-${GRAALVM_VERSION}/bin:${PATH}"
 ENV JAVA_HOME="/opt/graalvm-ce-java11-${GRAALVM_VERSION}"
 
+RUN gu install native-image
+
 LABEL maintainer="bishoybasily@gmail.com"
 
 

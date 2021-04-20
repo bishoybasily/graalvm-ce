@@ -25,5 +25,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: bishoybasily/graalvm-ce:ubuntu-20.04-java11-21.0.0.2-scala-2.13.5
+          tags: bishoybasily/graalvm-ce:11-focal
 

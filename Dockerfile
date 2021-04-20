@@ -20,7 +20,7 @@ RUN wget -P /opt https://github.com/sbt/sbt/releases/download/v${SBT_VERSION}/sb
     rm /opt/sbt-${SBT_VERSION}.zip
 ENV PATH="/opt/sbt/bin:${PATH}"
 
-ARG SCALA_VERSION=2.13.5
+ARG SCALA_VERSION=2.12.10
 RUN wget -P /opt https://downloads.lightbend.com/scala/${SCALA_VERSION}/scala-${SCALA_VERSION}.tgz && \
     tar -xzf /opt/scala-${SCALA_VERSION}.tgz -C /opt && \
     rm /opt/scala-${SCALA_VERSION}.tgz

@@ -30,11 +30,13 @@ ENV PATH="${INSTALLATION_DIRECTORY}/scala-${SCALA_VERSION}/bin:${PATH}"
 ENV SCALA_HOME="${INSTALLATION_DIRECTORY}/scala-${SCALA_VERSION}"
 
 ARG GRAALVM_VERSION=21.3.0
-RUN wget -P ${INSTALLATION_DIRECTORY} https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${GRAALVM_VERSION}/graalvm-ce-java17-linux-amd64-${GRAALVM_VERSION}.tar.gz && \
-    tar -xzf ${INSTALLATION_DIRECTORY}/graalvm-ce-java11-linux-amd64-${GRAALVM_VERSION}.tar.gz -C ${INSTALLATION_DIRECTORY} && \
-    rm ${INSTALLATION_DIRECTORY}/graalvm-ce-java11-linux-amd64-${GRAALVM_VERSION}.tar.gz
-ENV PATH="${INSTALLATION_DIRECTORY}/graalvm-ce-java11-${GRAALVM_VERSION}/bin:${PATH}"
-ENV JAVA_HOME="${INSTALLATION_DIRECTORY}/graalvm-ce-java11-${GRAALVM_VERSION}"
+ARG GRAALVM_JAVA_VERSION=17
+
+RUN wget -P ${INSTALLATION_DIRECTORY} https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${GRAALVM_VERSION}/graalvm-ce-java${GRAALVM_JAVA_VERSION}-linux-amd64-${GRAALVM_VERSION}.tar.gz && \
+    tar -xzf ${INSTALLATION_DIRECTORY}/graalvm-ce-java${GRAALVM_JAVA_VERSION}-linux-amd64-${GRAALVM_VERSION}.tar.gz -C ${INSTALLATION_DIRECTORY} && \
+    rm ${INSTALLATION_DIRECTORY}/graalvm-ce-java${GRAALVM_JAVA_VERSION}-linux-amd64-${GRAALVM_VERSION}.tar.gz
+ENV PATH="${INSTALLATION_DIRECTORY}/graalvm-ce-java${GRAALVM_JAVA_VERSION}-${GRAALVM_VERSION}/bin:${PATH}"
+ENV JAVA_HOME="${INSTALLATION_DIRECTORY}/graalvm-ce-java${GRAALVM_JAVA_VERSION}-${GRAALVM_VERSION}"
 
 RUN gu install native-image
 

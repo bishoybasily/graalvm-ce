@@ -10,7 +10,7 @@ RUN wget -P ${INSTALLATION_DIRECTORY} https://services.gradle.org/distributions/
     rm ${INSTALLATION_DIRECTORY}/gradle-${GRADLE_VERSION}-bin.zip
 ENV PATH="${INSTALLATION_DIRECTORY}/gradle-${GRADLE_VERSION}/bin:${PATH}"
 
-ARG MAVEN_VERSION=3.8.3
+ARG MAVEN_VERSION=3.8.5
 RUN wget -P ${INSTALLATION_DIRECTORY} https://downloads.apache.org/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz && \
     tar -xzf ${INSTALLATION_DIRECTORY}/apache-maven-${MAVEN_VERSION}-bin.tar.gz -C ${INSTALLATION_DIRECTORY} && \
     rm ${INSTALLATION_DIRECTORY}/apache-maven-${MAVEN_VERSION}-bin.tar.gz

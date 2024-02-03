@@ -16,13 +16,13 @@ RUN wget -P ${INSTALLATION_DIRECTORY} https://downloads.apache.org/maven/maven-3
     rm ${INSTALLATION_DIRECTORY}/apache-maven-${MAVEN_VERSION}-bin.tar.gz
 ENV PATH="${INSTALLATION_DIRECTORY}/apache-maven-${MAVEN_VERSION}/bin:${PATH}"
 
-ARG SBT_VERSION=1.4.8
+ARG SBT_VERSION=1.9.8
 RUN wget -P ${INSTALLATION_DIRECTORY} https://github.com/sbt/sbt/releases/download/v${SBT_VERSION}/sbt-${SBT_VERSION}.zip && \
     unzip ${INSTALLATION_DIRECTORY}/sbt-${SBT_VERSION}.zip -d ${INSTALLATION_DIRECTORY} && \
     rm ${INSTALLATION_DIRECTORY}/sbt-${SBT_VERSION}.zip
 ENV PATH="${INSTALLATION_DIRECTORY}/sbt/bin:${PATH}"
 
-ARG SCALA_VERSION=2.12.10
+ARG SCALA_VERSION=3.3.1
 RUN wget -P ${INSTALLATION_DIRECTORY} https://downloads.lightbend.com/scala/${SCALA_VERSION}/scala-${SCALA_VERSION}.tgz && \
     tar -xzf ${INSTALLATION_DIRECTORY}/scala-${SCALA_VERSION}.tgz --one-top-level=scala-${SCALA_VERSION} --strip-components 1 && rm ${INSTALLATION_DIRECTORY}/scala-${SCALA_VERSION}.tgz && \
     mv scala-${SCALA_VERSION} ${INSTALLATION_DIRECTORY}/scala-${SCALA_VERSION}

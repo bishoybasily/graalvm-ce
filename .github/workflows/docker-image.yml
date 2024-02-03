@@ -1,10 +1,16 @@
 name: Docker Image CI
 
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  workflow_dispatch:
+    inputs:
+      docker_image_tag:
+        type: string
+        required: true
+        description: "The tag of the generated docker image"
+#  push:
+#    branches: [ master ]
+#  pull_request:
+#    branches: [ master ]
 
 jobs:
 
@@ -25,5 +31,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: bishoybasily/graalvm-ce:focal-java21
+          tags: bishoybasily/graalvm-ce:${{ github.event.inputs.TARGET_SYSTEM }}, bishoybasily/graalvm-ce:latest
 

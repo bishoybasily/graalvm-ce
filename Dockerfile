@@ -32,7 +32,7 @@ ENV SCALA_HOME="${INSTALLATION_DIRECTORY}/scala-${SCALA_VERSION}"
 ARG JAVA_VERSION=21.0.2
 RUN wget -P ${INSTALLATION_DIRECTORY} https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-${JAVA_VERSION}/graalvm-community-jdk-${JAVA_VERSION}_linux-x64_bin.tar.gz && \
     tar -xzf ${INSTALLATION_DIRECTORY}/graalvm-community-jdk-${JAVA_VERSION}_linux-x64_bin.tar.gz --one-top-level=java-${JAVA_VERSION} --strip-components 1 && rm ${INSTALLATION_DIRECTORY}/graalvm-community-jdk-${JAVA_VERSION}_linux-x64_bin.tar.gz && \
-    mv java-${JAVA_VERSION} ${INSTALLATION_DIRECTORY}/java-${SCALA_VERSION}
+    mv java-${JAVA_VERSION} ${INSTALLATION_DIRECTORY}/java-${JAVA_VERSION}
 ENV PATH="${INSTALLATION_DIRECTORY}/java-${JAVA_VERSION}/bin:${PATH}"
 ENV JAVA_HOME="${INSTALLATION_DIRECTORY}/java-${JAVA_VERSION}"
 

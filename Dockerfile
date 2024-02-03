@@ -29,14 +29,13 @@ RUN wget -P ${INSTALLATION_DIRECTORY} https://downloads.lightbend.com/scala/${SC
 ENV PATH="${INSTALLATION_DIRECTORY}/scala-${SCALA_VERSION}/bin:${PATH}"
 ENV SCALA_HOME="${INSTALLATION_DIRECTORY}/scala-${SCALA_VERSION}"
 
-ARG GRAALVM_VERSION=21.3.0
-ARG GRAALVM_JAVA_VERSION=11
+ARG JAVA_VERSION=21.0.2
+RUN wget -P ${INSTALLATION_DIRECTORY} https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-${JAVA_VERSION}/graalvm-community-jdk-${JAVA_VERSION}_linux-x64_bin.tar.gz && \
+    tar -xzf ${INSTALLATION_DIRECTORY}/graalvm-community-jdk-${JAVA_VERSION}_linux-x64_bin.tar.gz -C ${INSTALLATION_DIRECTORY} && \
+    rm ${INSTALLATION_DIRECTORY}/graalvm-community-jdk-${JAVA_VERSION}_linux-x64_bin.tar.gz
 
-RUN wget -P ${INSTALLATION_DIRECTORY} https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${GRAALVM_VERSION}/graalvm-ce-java${GRAALVM_JAVA_VERSION}-linux-amd64-${GRAALVM_VERSION}.tar.gz && \
-    tar -xzf ${INSTALLATION_DIRECTORY}/graalvm-ce-java${GRAALVM_JAVA_VERSION}-linux-amd64-${GRAALVM_VERSION}.tar.gz -C ${INSTALLATION_DIRECTORY} && \
-    rm ${INSTALLATION_DIRECTORY}/graalvm-ce-java${GRAALVM_JAVA_VERSION}-linux-amd64-${GRAALVM_VERSION}.tar.gz
 ENV PATH="${INSTALLATION_DIRECTORY}/graalvm-ce-java${GRAALVM_JAVA_VERSION}-${GRAALVM_VERSION}/bin:${PATH}"
-ENV JAVA_HOME="${INSTALLATION_DIRECTORY}/graalvm-ce-java${GRAALVM_JAVA_VERSION}-${GRAALVM_VERSION}"
+ENV JAVA_HOME="${INSTALLATION_DIRECTORY}/graalvm-community-jdk-${JAVA_VERSION}_linux-x64_bin"
 
 RUN gu install native-image
 

@@ -4,13 +4,13 @@ RUN apt-get update && apt-get install unzip nano wget build-essential zlib1g-dev
 
 ARG INSTALLATION_DIRECTORY=/opt
 
-ARG GRADLE_VERSION=7.4.2
+ARG GRADLE_VERSION=8.6
 RUN wget -P ${INSTALLATION_DIRECTORY} https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip && \
     unzip ${INSTALLATION_DIRECTORY}/gradle-${GRADLE_VERSION}-bin.zip -d ${INSTALLATION_DIRECTORY} && \
     rm ${INSTALLATION_DIRECTORY}/gradle-${GRADLE_VERSION}-bin.zip
 ENV PATH="${INSTALLATION_DIRECTORY}/gradle-${GRADLE_VERSION}/bin:${PATH}"
 
-ARG MAVEN_VERSION=3.8.5
+ARG MAVEN_VERSION=3.9.6
 RUN wget -P ${INSTALLATION_DIRECTORY} https://downloads.apache.org/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz && \
     tar -xzf ${INSTALLATION_DIRECTORY}/apache-maven-${MAVEN_VERSION}-bin.tar.gz -C ${INSTALLATION_DIRECTORY} && \
     rm ${INSTALLATION_DIRECTORY}/apache-maven-${MAVEN_VERSION}-bin.tar.gz

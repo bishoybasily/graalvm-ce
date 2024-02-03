@@ -31,5 +31,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: bishoybasily/graalvm-ce:${{ github.event.inputs.TARGET_SYSTEM }}, bishoybasily/graalvm-ce:latest
+          tags: bishoybasily/graalvm-ce:${{ github.event.inputs.docker_image_tag }}, bishoybasily/graalvm-ce:latest
 

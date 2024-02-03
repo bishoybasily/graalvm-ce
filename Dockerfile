@@ -24,19 +24,16 @@ ENV PATH="${INSTALLATION_DIRECTORY}/sbt/bin:${PATH}"
 
 ARG SCALA_VERSION=2.12.10
 RUN wget -P ${INSTALLATION_DIRECTORY} https://downloads.lightbend.com/scala/${SCALA_VERSION}/scala-${SCALA_VERSION}.tgz && \
-    tar -xzf ${INSTALLATION_DIRECTORY}/scala-${SCALA_VERSION}.tgz -C ${INSTALLATION_DIRECTORY}/scala-${SCALA_VERSION} --strip-components 1 && \
-    rm ${INSTALLATION_DIRECTORY}/scala-${SCALA_VERSION}.tgz
+    tar -xzf ${INSTALLATION_DIRECTORY}/scala-${SCALA_VERSION}.tgz --one-top-level=scala-${SCALA_VERSION} --strip-components 1 && rm ${INSTALLATION_DIRECTORY}/scala-${SCALA_VERSION}.tgz && \
+    mv scala-${SCALA_VERSION} ${INSTALLATION_DIRECTORY}/scala-${SCALA_VERSION}
 ENV PATH="${INSTALLATION_DIRECTORY}/scala-${SCALA_VERSION}/bin:${PATH}"
 ENV SCALA_HOME="${INSTALLATION_DIRECTORY}/scala-${SCALA_VERSION}"
 
 ARG JAVA_VERSION=21.0.2
 RUN wget -P ${INSTALLATION_DIRECTORY} https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-${JAVA_VERSION}/graalvm-community-jdk-${JAVA_VERSION}_linux-x64_bin.tar.gz && \
-    tar -xzf ${INSTALLATION_DIRECTORY}/graalvm-community-jdk-${JAVA_VERSION}_linux-x64_bin.tar.gz -C ${INSTALLATION_DIRECTORY}/java-${JAVA_VERSION} --strip-components 1 && \
-    rm ${INSTALLATION_DIRECTORY}/graalvm-community-jdk-${JAVA_VERSION}_linux-x64_bin.tar.gz
+    tar -xzf ${INSTALLATION_DIRECTORY}/graalvm-community-jdk-${JAVA_VERSION}_linux-x64_bin.tar.gz --one-top-level=java-${JAVA_VERSION} --strip-components 1 && rm ${INSTALLATION_DIRECTORY}/graalvm-community-jdk-${JAVA_VERSION}_linux-x64_bin.tar.gz && \
+    mv java-${JAVA_VERSION} ${INSTALLATION_DIRECTORY}/java-${SCALA_VERSION}
 ENV PATH="${INSTALLATION_DIRECTORY}/java-${JAVA_VERSION}/bin:${PATH}"
 ENV JAVA_HOME="${INSTALLATION_DIRECTORY}/java-${JAVA_VERSION}"
 
 LABEL maintainer="bishoybasily@gmail.com"
-
-
-

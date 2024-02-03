@@ -25,5 +25,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: bishoybasily/graalvm-ce:focal-java11
+          tags: bishoybasily/graalvm-ce:focal-java21
 
